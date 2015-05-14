@@ -1,0 +1,14 @@
+defmodule HelloPhoenix.PageController do
+  use HelloPhoenix.Web, :controller
+
+  plug :action
+
+  def index(conn, _params) do
+    render conn, "index.html"
+  end
+
+  def info(conn, _params) do
+    render conn, "info.html", msg: "Hello info!"
+  end
+  
+end
