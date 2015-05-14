@@ -22,6 +22,8 @@ defmodule HelloPhoenix.ConnCase do
 
       # Alias the data repository and import query/model functions
       alias HelloPhoenix.Repo
+      alias HelloPhoenix.Contact
+      alias Ecto.Adapters.SQL
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
 
@@ -30,6 +32,13 @@ defmodule HelloPhoenix.ConnCase do
 
       # The default endpoint for testing
       @endpoint HelloPhoenix.Endpoint
+
+      def send_request(conn) do
+        conn
+        |> put_private(:plug_skip_csrf_protection, true)
+        |> HelloPhoenix.Endpoint.call([])
+      end
+
     end
   end
 
